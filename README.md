@@ -122,19 +122,41 @@ A high-level overview of anticipated key UI components (e.g., ProductCard, Selle
 
 - **Payment Form**: Placeholder integration for Stripe or PayPal, simulating payment confirmation.
 
-<!-- // Visual Break -->
+<!-- // VISUAL BREAK -->
 
-### Backend Design & Structures
+### Backend Design & Architecture
 
-A brief overview of key features like data models, authentication flow, and integrations
+A high-level overview of user data, product data, order processing, and other features that drive the platform.
 
-#### Auth
+#### Data Models
 
-#### Schema
+- **User**: Handles profile information, authentication roles (e.g., buyer, seller), and user-specific preferences.
+- **Product**: Stores details on each listing, including price, description, categories, and images.
+- **Order**: Tracks items in the user's cart, order status, and payment confirmation.
 
-#### Relationships
+<!-- 
+TODO
+  #### API Structure
+TODO
+  - **Endpoints**: Main API routes supporting user actions, product queries, and checkout processing.
+  ? - `/products`:
+    ? - Regular users can only retrieve product information
+    ? - Vendors can also post products
+  ? - `/[:user]/`: Manage client profile, preferences, history, vendor status, etc.
+  ? - `/cart/`: Manage items in user's cart (add/remove items, modify quantities)
+  ? - `/checkout`: Mock order processing
+    - etc
+-->
+
+#### Authentication
+
+- **Flow**: Manages secure login and registration, with role-based permissions to differentiate access levels for buyers and sellers.
+- **Permissions**: Differentiates features for user roles, like product management for sellers.
 
 #### Integrations
+
+- **Payment Processors**: Integrations with services like Stripe to handle simulated payment flow.
+- **Image Storage**: Stores or caches images using services like Amazon S3 or placeholders for scalability.
 
 <!-- // VISUAL BREAK -->
 
