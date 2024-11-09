@@ -261,3 +261,20 @@ Researching:
   - Pillow
   - Amazon S3
 -->
+
+## License
+
+This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0).
+
+You are free to:
+
+- View, download, and use this project’s source code **for personal or educational purposes only.**
+
+Under the following terms:
+
+- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests I endorse you or your use.
+- **NonCommercial** — You may not use this material for commercial purposes.
+
+For more details, see the [LICENSE](./LICENSE) file or visit the [Creative Commons website](https://creativecommons.org/licenses/by-nc/4.0/).
+
+> **Note:** This license does not grant permission for commercial use or distribution of this project. If you are interested in licensing this project for commercial purposes, please contact me directly.
