@@ -8,15 +8,7 @@ This project is currently in the early stages of development. More to come as fe
 
 ### Feature Roadmap
 
-<!--
-TODO
-  Outline planned features in a timeline or list to show the development process and priorities. For example, the initial focus could be on core features like authentication and product listings.
--->
-
-<!--
-TODO
-  Add Project Preview/Screenshots as Roadmap features get completed.
--->
+The project includes core e-commerce functionality, with features like user profiles, product catalog browsing, a shopping cart, and checkout. For a detailed list of planned features and stretch goals, see the [Feature Roadmap](./docs/roadmap.md).
 
 ## Installation and Setup
 
@@ -236,13 +228,11 @@ These are the technologies I have chosen for this project, along with some of th
 
   - A robust, scalable relational database, suitable for managing complex data structures.
 
-<!--
 - #### [**Stripe**](https://stripe.com/) or [**PayPal**](https://paypal.com/)
 
   - Demonstrate ability to integrate real-world third party services.
   - Leverage Stripe API's Test Mode as a safeguard against accidental payment processing.
   - Build practical knowledge of payment API methodologies and best practices.
--->
 
 <!--
 - #### [Vercel](https://vercel.com/)
@@ -275,6 +265,6 @@ Under the following terms:
 - **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests I endorse you or your use.
 - **NonCommercial** — You may not use this material for commercial purposes.
 
-For more details, see the [LICENSE](./LICENSE) file or visit the [Creative Commons website](https://creativecommons.org/licenses/by-nc/4.0/).
+For more details, see the [LICENSE](./LICENSE.txt) file or visit the [Creative Commons website](https://creativecommons.org/licenses/by-nc/4.0/).
 
 > **Note:** This license does not grant permission for commercial use or distribution of this project. If you are interested in licensing this project for commercial purposes, please contact me directly.
