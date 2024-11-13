@@ -194,8 +194,13 @@ These are the technologies I have chosen for this project, along with some of th
 - #### [Vitest](https://vitest.dev/)
 
   - Vite-native unit testing framework.
-  - Streamlines testing for headless code.
+  - Streamlines testing.
   - Testing XP gainz.
+
+- [testing-library/react](https://testing-library.com/docs/react-testing-library/intro/)
+
+  - Expands Vitest functionality by providing means to test UI components as rendered by client.
+  - Moar testing/integration XP gainz!
 
 - #### [Cypress](https://cypress.io/)
 
