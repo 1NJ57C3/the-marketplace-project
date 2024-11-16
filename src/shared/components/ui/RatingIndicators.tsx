@@ -1,11 +1,11 @@
 import React from "react";
-import "./RatingDisplay.css";
+import "./RatingIndicators.css";
 
-interface RatingDisplayProps {
+interface RatingIndicatorsProps {
   rating: number;
 };
 
-function RatingDisplay({ rating }: RatingDisplayProps) {
+function RatingIndicators({ rating }: RatingIndicatorsProps) {
   // if (rating < 0) throw new Error("Rating must be a positive number"); // TODO revise test to accept Error?
   if (rating < 0) return null;
 
@@ -18,8 +18,8 @@ function RatingDisplay({ rating }: RatingDisplayProps) {
 
   return (
     <div
-      className="rating-display"
-      data-testid="rating-display"
+      className="rating-indicators"
+      data-testid="rating-indicators"
       title={description}
       aria-label={description}
     >
@@ -28,4 +28,4 @@ function RatingDisplay({ rating }: RatingDisplayProps) {
   );
 }
 
-export default RatingDisplay;
+export default RatingIndicators;
