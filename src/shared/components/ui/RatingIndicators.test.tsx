@@ -1,32 +1,42 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import RatingIndicators from "./RatingIndicators";
+
+function renderRatingIndicators(rating: number) {
+  return render(<RatingIndicators rating={rating} />);
+}
 
 describe("RatingIndicators", () => {
   it("renders when given a numeric rating", () => {
-    // Render with a simple numeric rating
-    render(<RatingIndicators rating={3} />);
-    // Check if the rating value is displayed correctly
+    renderRatingIndicators(3);
     expect(screen.getByTestId("rating-indicators")).toBeInTheDocument();
   });
 
-  it("renders the correct number of filled bubbles", () => {
-    // Render with a rating
-    render(<RatingIndicators rating={4} />);
-    // Check for the correct number of filled symbols (●)
-    expect(screen.getAllByText("●")).toHaveLength(4);
-  });
+  it("renders the correct number of filled and empty bubbles", () => {
+    const testCases = [
+      { rating: 5, filled: 5, empty: 0 },
+      { rating: 4, filled: 4, empty: 1 },
+      { rating: 3, filled: 3, empty: 2 },
+      { rating: 2, filled: 2, empty: 3 },
+      { rating: 1, filled: 1, empty: 4 },
+      { rating: 0, filled: 0, empty: 5 },
+    ];
 
-  it("renders the correct number of empty bubbles", () => {
-    // Render with a partial rating
-    render(<RatingIndicators rating={2} />);
-    // Check for the correct number of empty symbols (○)
-    expect(screen.getAllByText("○")).toHaveLength(3);
+    testCases.forEach(({ rating, filled, empty }) => {
+      renderRatingIndicators(rating);
+      expect(screen.queryAllByText("●")).toHaveLength(filled);
+      expect(screen.queryAllByText("○")).toHaveLength(empty);
+      cleanup();
+    });
   });
 
   it("renders nothing when rating is invalid", () => {
-    // Render with an invalid rating
-    const { container } = render(<RatingIndicators rating={-1} />);
-    // Expect no visual output
-    expect(container.textContent).toBe("");
-  });
+    const testCases = [{ rating: -1 }, { rating: 6 }];
+
+    testCases.forEach(({ rating }) => {
+      renderRatingIndicators(rating);
+      expect(screen.queryByTestId("rating-indicators")).not.toBeInTheDocument();
+      cleanup();
+    })
+    }
+  );
 });
