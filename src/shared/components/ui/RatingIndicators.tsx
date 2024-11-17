@@ -6,7 +6,7 @@ interface RatingIndicatorsProps {
 
 function RatingIndicators({ rating }: RatingIndicatorsProps) {
   // if (rating < 0) throw new Error("Rating must be a positive number"); // TODO revise test to accept Error?
-  if (rating < 0) return null;
+  if (rating < 0 || rating > 5) return null;
 
   const indicators: React.ReactNode[] = [];
   const description = `Rated ${rating} out of 5`;
