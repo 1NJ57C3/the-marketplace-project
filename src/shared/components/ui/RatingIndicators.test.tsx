@@ -36,7 +36,22 @@ describe("RatingIndicators", () => {
       renderRatingIndicators(rating);
       expect(screen.queryByTestId("rating-indicators")).not.toBeInTheDocument();
       cleanup();
-    })
-    }
-  );
+    });
+  });
+
+  it("renders filled bubbles to the rating's nearest half", () => {
+    const testCases = [
+      { rating: 4.24, filled: 4, halves: 0 },
+      { rating: 4.25, filled: 4, halves: 1 },
+      { rating: 4.74, filled: 4, halves: 1 },
+      { rating: 4.75, filled: 5, halves: 0 },
+    ];
+
+    testCases.forEach(({ rating, filled, halves }) => {
+      renderRatingIndicators(rating);
+      expect(screen.queryAllByText("●")).toHaveLength(filled);
+      expect(screen.queryAllByText("◐")).toHaveLength(halves);
+      cleanup();
+    });
+  });
 });
