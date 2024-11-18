@@ -54,4 +54,16 @@ describe("RatingIndicators", () => {
       cleanup();
     });
   });
+
+  it("provides correct accessible labels", () => {
+    const rating = 3.8;
+    const description = `Rated ${rating} out of 5`;
+
+    renderRatingIndicators(rating);
+    expect(screen.getByTestId("rating-indicators")).toHaveAccessibleName(
+      description
+    );
+  });
+
+  it("");
 });
