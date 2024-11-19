@@ -1,3 +1,4 @@
 .rating-indicators {
   display: inline-block;
+  user-select: none;
 }
