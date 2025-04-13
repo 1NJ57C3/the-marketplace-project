@@ -6,53 +6,18 @@ A basic e-commerce site that handles user authentication, product listings, filt
 
 This project is currently in the early stages of development. More to come as features get fleshed out.
 
-### Feature Roadmap
+## Structure
+
+This is a monorepo project with separate frontend and backend directories:
+
+- [`frontend`](./frontend/README.md) - Vite + React + TypeScript UI
+- [`backend`](./backend/README.md) - Python + Django + PostgreSQL API
+
+Each subdirectory has its own README with setup instructions and implementation notes.
+
+## Feature Roadmap
 
 The project includes core e-commerce functionality, with features like user profiles, product catalog browsing, a shopping cart, and checkout. For a detailed list of planned features and stretch goals, see the [Feature Roadmap](./docs/roadmap.md).
-
-## Installation and Setup
-
-### Installation
-
-To install project dependencies, navigate to the project repo in your CLI and use the following commands according to your package manager:
-
-`pnpm`:
-
-```shell
-pnpm install
-```
-
-`npm`:
-
-```shell
-npm install
-```
-
-### Test Suite
-
-<!-- TODO -->
-
-### Run App Server
-
-Once installed, start the app server to demo the app locally.
-
-`pnpm`:
-
-```shell
-pnpm run dev
-```
-
-`npm`:
-
-```shell
-npm run dev
-```
-
-### Open App UI
-
-Open your preferred browser and navigate to `localhost:5173`.
-
-> _Note_: As a general rule of thumb, I recommend always using an Incognito tab if localStorage or persistent cookies aren't essential. This will help minimize necessary maintenance.
 
 ## Notes/Reflections
 
@@ -82,76 +47,6 @@ Showcase a range of proven skills including, but not limited to:
 
 <!-- // VISUAL BREAK -->
 
-### Frontend Component Structure
-
-A high-level overview of anticipated key UI components (e.g., ProductCard, SellerProfile) to capture my front-end approach.
-
-#### Navigation
-
-- **Main Header**: Displays promotional sales or important notices.
-- **Nav Bar**: Logo links to root, product categories.
-- **Search Bar**: Autocomplete suggestions based on user input.
-
-#### User Profile
-
-- **Profile Info**: Includes name, contact details, shipping and billing addresses and payment preferences.
-- **Order History**: Displays past purchases and pending orders.
-- **User Preferences**: Site configuration settings.
-- **Support**: Access to support ticket management.
-
-#### Product Display
-
-- **Product Grid**: Shows featured items by default with sorting and pagination options.
-- **_Stretch Goal_**: Design "algorithm" for recommendations features and default product sorting.
-- **Filter Menu**: Allows filtering by brand, seller, color, category, subcategories, etc.
-
-#### Shopping Cart
-
-- **Cart Sidebar**: Lists items in cart, including product name, image, price, and desired quantities.
-- **Subtotal & Total**: Dynamically updated with cart changes.
-
-#### Payment Processing
-
-- **Payment Form**: Placeholder integration for Stripe or PayPal, simulating payment confirmation.
-
-<!-- // VISUAL BREAK -->
-
-### Backend Design & Architecture
-
-A high-level overview of user data, product data, order processing, and other features that drive the platform.
-
-#### Data Models
-
-- **User**: Handles profile information, authentication roles (e.g., buyer, seller), and user-specific preferences.
-- **Product**: Stores details on each listing, including price, description, categories, and images.
-- **Order**: Tracks items in the user's cart, order status, and payment confirmation.
-
-<!-- 
-TODO
-  #### API Structure
-TODO
-  - **Endpoints**: Main API routes supporting user actions, product queries, and checkout processing.
-  ? - `/products`:
-    ? - Regular users can only retrieve product information
-    ? - Vendors can also post products
-  ? - `/[:user]/`: Manage client profile, preferences, history, vendor status, etc.
-  ? - `/cart/`: Manage items in user's cart (add/remove items, modify quantities)
-  ? - `/checkout`: Mock order processing
-    - etc
--->
-
-#### Authentication
-
-- **Flow**: Manages secure login and registration, with role-based permissions to differentiate access levels for buyers and sellers.
-- **Permissions**: Differentiates features for user roles, like product management for sellers.
-
-#### Integrations
-
-- **Payment Processors**: Integrations with services like Stripe to handle simulated payment flow.
-- **Image Storage**: Stores or caches images using services like Amazon S3 or placeholders for scalability.
-
-<!-- // VISUAL BREAK -->
-
 ### Expected Challenges
 
 Some of the problems I currently foresee with possible solutions.
@@ -163,7 +58,7 @@ Some of the problems I currently foresee with possible solutions.
 #### Excessive endpoint hits from autosave features
 
 - Limit features using autosave
-- Batch updates to reduce frequency of reqeusts
+- Batch updates to reduce frequency of requests
 
 #### Monthly limits
 
@@ -183,79 +78,31 @@ TODO
   Add content as we encounter roadblocks
 -->
 
-### Tools/Tech Selection
+## Tooling & Stack
 
-These are the technologies I have chosen for this project, along with some of the reasons they were selected.
+This section outlines technologies currently being evaluated for deployment, image handling, and other project infrastructure needs.
 
-- #### [Vite](https://vite.dev/)
+### Frontend Deployment
 
-  - Fast and efficient way to scaffold JavaScript projects.
-
-- #### [Vitest](https://vitest.dev/)
-
-  - Vite-native unit testing framework.
-  - Streamlines testing.
-  - Testing XP gainz.
-
-- [testing-library/react](https://testing-library.com/docs/react-testing-library/intro/)
-
-  - Expands Vitest functionality by providing means to test UI components as rendered by client.
-  - Moar testing/integration XP gainz!
-
-- #### [Cypress](https://cypress.io/)
-
-  - Browser-based (end-to-end/component) testing.
-  - A strong contender where Vitest is weak.
-  - Moar testing gainz.
-
-- #### [React](https://react.dev/) + [TypeScript](https://typescriptlang.org/)
-
-  - TypeScript for scalability and to help ensure dynamic data retains the correct shapes through lifecycle.
-  - Deepen frontend mastery.
-
-- #### [SWC](https://swc.rs/)
-
-  - Reduces build times over Babel by 20x.
-  - Experiment with alternative tooling.
-
-<!--
-- #### [styled-components](https://styled-components.com/)
-
-  - Modularizes CSS by coupling stylesheets with JS components, simplifying maintenance.
-  - Facilitates learning and best practices in component-driven styling.
- -->
-
-- #### [Django](https://djangoproject.com/)
-
-  - Reinforce [Python](https://python.org/) skills whilst building familiarity with Django methodologies.
-
-- #### [PostgreSQL](https://postgresql.org/)
-
-  - A robust, scalable relational database, suitable for managing complex data structures.
-
-- #### [**Stripe**](https://stripe.com/) or [**PayPal**](https://paypal.com/)
-
-  - Demonstrate ability to integrate real-world third party services.
-  - Leverage Stripe API's Test Mode as a safeguard against accidental payment processing.
-  - Build practical knowledge of payment API methodologies and best practices.
-
-<!--
-- #### [Vercel](https://vercel.com/)
+- [Vercel](https://vercel.com/)
 
   - Fast and free
   - Automates deployment via CI/CD Pipeline
-  - Easy custom domain (DNS) setup
+    - Easy custom domain (DNS) setup
 
     > _Neither sponsored nor affilliated with Vercel... yet._ :elmorise:
--->
 
-<!--
-Researching:
-  for backend image handling:
-  - ImageField
-  - Pillow
-  - Amazon S3
--->
+### Backend Deployment
+
+- [Render](https://render.com/)
+
+- [fly.io](https://fly.io/)
+
+### Backend Image Handling
+
+- ImageField
+- Pillow
+- Amazon S3
 
 ## License
 
