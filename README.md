@@ -45,8 +45,6 @@ Showcase a range of proven skills including, but not limited to:
 - Create convincing mock workflows and user experiences
 - Independently develop complex production-level projects
 
-<!-- // VISUAL BREAK -->
-
 ### Expected Challenges
 
 Some of the problems I currently foresee with possible solutions.
@@ -69,8 +67,6 @@ Some of the problems I currently foresee with possible solutions.
 - Use placeholders to indicate that these details were purposely omitted, rather than overlooked.
 - Possibly come back to this at the very end of the project, or only if there is intention to launch The Marketplace Project as a live service.
 
-<!-- // VISUAL BREAK -->
-
 ### Unexpected Obstacles
 
 <!--
@@ -85,17 +81,14 @@ This section outlines technologies currently being evaluated for deployment, ima
 ### Frontend Deployment
 
 - [Vercel](https://vercel.com/)
-
   - Fast and free
   - Automates deployment via CI/CD Pipeline
     - Easy custom domain (DNS) setup
-
     > _Neither sponsored nor affilliated with Vercel... yet._ :elmorise:
 
 ### Backend Deployment
 
 - [Render](https://render.com/)
-
 - [fly.io](https://fly.io/)
 
 ### Backend Image Handling
