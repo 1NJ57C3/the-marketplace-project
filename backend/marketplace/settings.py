@@ -14,29 +14,23 @@ from pathlib import Path
 import os
 import environ
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# ENV setup
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
-
-# Determine environment file based on ENV environment variable
-ENVIRONMENT = os.getenv("ENV", "dev") # fallback to "dev" if "ENV" not set
-
+ENVIRONMENT = os.getenv("ENV", "dev")
 env_file = BASE_DIR / f".env.{ENVIRONMENT}"
 env.read_env(env_file)
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
+# Core Settings
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('DEBUG')
-
+DEBUG = env.bool('DEBUG', default=False)
 ALLOWED_HOSTS = []
 
-
-# Application definition
+# Installed Apps
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -49,6 +43,8 @@ INSTALLED_APPS = [
     'users',
 ]
 
+# Middleware
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -59,7 +55,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# URL Config + WSGI
+
 ROOT_URLCONF = 'marketplace.urls'
+WSGI_APPLICATION = 'marketplace.wsgi.application'
+
+# Templates
 
 TEMPLATES = [
     {
@@ -76,22 +77,15 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'marketplace.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+# Databases
 
 DATABASES = {
     'default': env.db()
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
+# Authentication and User model
 
 AUTH_USER_MODEL = 'users.User'
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -117,24 +111,18 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 20,
 }
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.2/topics/i18n/
+# Localization / i18n
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+# Default primary key auto field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
