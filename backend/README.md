@@ -2,11 +2,35 @@
 
 ## Setup
 
+### Install Project and Dependencies
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate
+pip-compile requirements.in
 pip install -r requirements.txt
 ```
+
+## Database Setup
+
+### Make and Run Migrations
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+## Configuring Environmental Variables
+
+Use the included [`.env.example`](./.env.example) file as a template to create your own `.env` file. Name your file according to its environment type (e.g. `.env.dev`, `.env.prod`, `.env.test`).
+
+This project defaults to `.env.dev.` If you want to use a different file, prepend Django commands with an `ENV` variable like so:
+
+```bash
+ENV=prod python manage.py runserver
+```
+
+> **Note**: This project comes with its own ENV-based config loader.
 
 ## Run Development Server
 
