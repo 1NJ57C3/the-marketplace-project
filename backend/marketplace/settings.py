@@ -118,6 +118,9 @@ REST_FRAMEWORK = {
 }
 
 # JWT / `SimpleJWT` config
+# - Auth handled via Authorization header using Bearer tokens
+# - Access tokens are short-lived; refresh tokens are blacklistable.
+# - In production, consider rotating refresh tokens *and/or* using HttpOnly cookies to mitigate XSS.
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
