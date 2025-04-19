@@ -24,12 +24,12 @@
 
 - [x] Set up `UserCreateSerializer` with password confirmation
 - [x] Add registration endpoint with CreateAPIView
-- [ ] Install and configure JWT (`djangorestframework-simplejwt`)
-- [ ] Add login route (`/api/token/`)
-- [ ] Add refresh route (`/api/token/refresh/`)
-- [ ] Create `/me/` user detail route (or equivalent)
-- [ ] Add view-level access control using DRF permissions
-- [ ] Optional: Token blacklist / logout flow
+- [x] Install and configure JWT (`djangorestframework-simplejwt`)
+- [x] Add login route (`/api/token/`)
+- [x] Add refresh route (`/api/token/refresh/`)
+- [x] Create `/me/` user detail route (or equivalent)
+- [x] Add view-level access control using DRF permissions
+- [x] Optional: Token blacklist / logout flow
 - [ ] Optional: Email/password reset scaffolding
 
 ---
