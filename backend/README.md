@@ -11,6 +11,8 @@ pip-compile requirements.in
 pip install -r requirements.txt
 ```
 
+---
+
 ## Database Setup
 
 ### Make and Run Migrations
@@ -19,6 +21,8 @@ pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
 ```
+
+---
 
 ## Configuring Environmental Variables
 
@@ -32,45 +36,49 @@ ENV=prod python manage.py runserver
 
 > **Note**: This project comes with its own ENV-based config loader.
 
+---
+
 ## Run Development Server
 
 ```bash
 python manage.py runserver
 ```
 
+---
+
 ## Backend Design & Architecture
 
-A high-level overview of user data, product data, order processing, and other features that drive the platform.
+A high-level overview of user data, product data, order processing, and other key features that drive the platform.
 
 ### Data Models
 
-- **User**: Handles profile information, authentication roles (e.g., buyer, seller), and user-specific preferences.
-- **Product**: Stores details on each listing, including price, description, categories, and images.
-- **Order**: Tracks items in the user's cart, order status, and payment confirmation.
+- **User** - Manages profile info, authentication roles (buyer/seller/staff), and preferences.
+- **Product** - Stores listing data: title, description, price, category, tags, images.
+- **Order** - Tracks cart contents, order status, and payment confirmation.
 
 <!-- 
 TODO
   ### API Structure
 TODO
   - **Endpoints**: Main API routes supporting user actions, product queries, and checkout processing.
-  ? - `/products`:
-    ? - Regular users can only retrieve product information
-    ? - Vendors can also post products
-  ? - `/[:user]/`: Manage client profile, preferences, history, vendor status, etc.
-  ? - `/cart/`: Manage items in user's cart (add/remove items, modify quantities)
-  ? - `/checkout`: Mock order processing
-    - etc
+  // - `/[:user]/`: Manage client profile, preferences, history, vendor status, etc. // this is the frontend route 🤦🏻‍♂️
+  ? - `/users/`: Profile, preferences, vendor info, etc. 
+  ? - `/products`: Read-only for users, full CRUD for vendors
+  ? - `/cart/`: Add/remove/edit cart contents
+  ? - `/checkout`: Mock payment flow
 -->
 
 ### Authentication
 
-- **Flow**: Manages secure login and registration, with role-based permissions to differentiate access levels for buyers and sellers.
-- **Permissions**: Differentiates features for user roles, like product management for sellers.
+- **Flow**: Secure login and registration using token-based auth
+- **Permissions**: Role-based access control (RBAC) to separate seller/buyer capabilities.
 
 ### Integrations
 
-- **Payment Processors**: Integrations with services like Stripe to handle simulated payment flow.
-- **Image Storage**: Stores or caches images using services like Amazon S3 or placeholders for scalability.
+- **Payment Processors**: Intended Stripe integration using Test Mode
+- **Image Storage**: Placeholder or S3-compatible image handling, depending on hosting requirements
+
+---
 
 ## Tooling & Stack
 
@@ -78,18 +86,20 @@ This section outlines the key technologies used to build and manage the backend,
 
 - ### [Django](https://djangoproject.com/)
 
-  - Reinforce [Python](https://python.org/) skills whilst building familiarity with Django methodologies.
+  - Popular, proven Python web framework
+  - Batteries-included conventions and ORMs
 
 - ### [Django REST Framework](https://www.django-rest-framework.org/)
 
-  - Enables robust API development and serializer-based data handling for frontend integration.
+  - Serializer-based API framework
+  - Clean separation of concerns between views, logic, and I/O
 
 - ### [PostgreSQL](https://postgresql.org/)
 
-  - A robust, scalable relational database, suitable for managing complex data structures.
+  - Scalable, feature-rich SQL database
+  - Strong compatibility with Django and complex rational data
 
 - ### [**Stripe**](https://stripe.com/) or [**PayPal**](https://paypal.com/)
 
-  - Demonstrate ability to integrate real-world third party services.
-  - Leverage Stripe API's Test Mode as a safeguard against accidental payment processing.
-  - Build practical knowledge of payment API methodologies and best practices.
+  - Intended to showcase real-world API integration
+  - Stripe Test Mode is the planned approach for simulating payment safely
