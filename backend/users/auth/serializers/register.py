@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
 
 from users.auth.utils import validate_password_confirmation
@@ -25,6 +26,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         validate_password_confirmation(data["password"], data["confirm_password"])
+        validate_password(data["password"])
         return data
 
     def create(self, validated_data):
