@@ -1,7 +1,11 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
+from users.auth.utils import validate_password_confirmation
+
+
 User = get_user_model()
+
 
 class UserCreateSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
@@ -13,8 +17,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
         read_only_fields = ['is_seller']
 
     def validate(self, data):
-        if data['password'] != data['password2']:
-            raise serializers.ValidationError("Passwords must match.")
+        validate_password_confirmation(data['password'], data['password2'])
         return data
 
     def create(self, validated_data):
