@@ -8,7 +8,7 @@ User = get_user_model()
 
 @pytest.fixture
 def api_client():
-    APIClient
+    return APIClient()
 
 
 @pytest.fixture
