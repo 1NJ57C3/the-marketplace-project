@@ -1,27 +1,17 @@
 import pytest
 
+from users.auth.tests.test_utils import login_user, assert_token_presence
+
 
 @pytest.mark.django_db
 def test_login_with_username(api_client, create_user):
     create_user()
-    response = api_client.post("/api/auth/login/", {
-        "username": "testuser",
-        "password": "strongpassword123",
-    }, format="json")
-
-    assert response.status_code == 200
-    assert "access" in response.data
-    assert "refresh" in response.data
+    response = login_user(api_client)
+    assert_token_presence(response, expect_token=True)
 
 
 @pytest.mark.django_db
 def test_login_with_email(api_client, create_user):
     create_user()
-    response = api_client.post("/api/auth/login/", {
-        "username": "test@example.com",
-        "password": "strongpassword123",
-    }, format="json")
-
-    assert response.status_code == 200
-    assert "access" in response.data
-    assert "refresh" in response.data
+    response = login_user(api_client, username="test@example.com")
+    assert_token_presence(response, expect_token=True)

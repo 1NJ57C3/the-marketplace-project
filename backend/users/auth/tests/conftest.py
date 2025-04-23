@@ -13,11 +13,16 @@ def api_client():
 
 @pytest.fixture
 def create_user():
-    def make_user(**kwargs):
+    def make_user(
+        username="testuser",
+        email="test@example.com",
+        password="strongpassword123",
+        **kwargs,
+    ):
         defaults = {
-            "username": "testuser",
-            "email": "test@example.com",
-            "password": "strongpassword123",
+            "username": username,
+            "email": email,
+            "password": password,
         }
         defaults.update(kwargs)
         return User.objects.create_user(**defaults)
