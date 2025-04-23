@@ -88,6 +88,10 @@ DATABASES = {
 
 # Authentication and User model
 
+AUTHENTICATION_BACKENDS = [
+    'auth.backends.FlexAuth',
+    'django.contrib.auth.backends.ModelBackend',
+]
 AUTH_USER_MODEL = 'users.User'
 AUTH_PASSWORD_VALIDATORS = [
     {
