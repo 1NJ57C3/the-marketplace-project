@@ -3,3 +3,11 @@ def login_user(api_client, username="testuser", password="strongpassword123"):
         "username": username,
         "password": password,
     }, format="json")
+
+
+def authenticate_client(api_client, token):
+    """
+    Sets the Authorization header on the given APIClient
+    """
+    api_client.credentials(HTTP_AUTHORIZATION=f"Bearer {token}")
+    return api_client

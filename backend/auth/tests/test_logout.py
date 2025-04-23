@@ -1,6 +1,6 @@
 import pytest
 
-from tests.utils import login_user
+from tests.utils import login_user, authenticate_client
 
 
 @pytest.mark.django_db
@@ -14,7 +14,7 @@ def test_logout_blacklist_refresh(api_client, create_user):
     refresh = login_resp.data["tokens"]["refresh"]
 
     # Authenticate client for Logout
-    api_client.credentials(HTTP_AUTHORIZATION=f"Bearer {access}")
+    authenticate_client(api_client, access)
 
     # Logout
     resp = api_client.post("/api/auth/logout/", {
@@ -28,6 +28,8 @@ def test_logout_blacklist_refresh(api_client, create_user):
     }, format="json")
     assert refresh_resp.status_code == 401
 
+
+@pytest.mark.django_db
 def test_logout_requires_auth(api_client):
     # Attempt to log out without first being authenticated
     resp = api_client.post("/api/auth/logout/", {
