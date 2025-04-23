@@ -1,6 +1,7 @@
 import pytest
 
-from auth.tests.test_utils import login_user
+from tests.utils import login_user
+
 
 @pytest.mark.django_db
 def test_logout_blacklist_refresh(api_client, create_user):

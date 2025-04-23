@@ -1,6 +1,7 @@
 import pytest
 
-from auth.tests.test_utils import login_user, assert_token_presence
+from tests.utils import login_user
+from auth.tests.test_utils import assert_token_presence
 
 
 @pytest.mark.django_db
