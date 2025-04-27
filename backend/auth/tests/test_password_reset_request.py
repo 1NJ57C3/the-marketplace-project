@@ -1,8 +1,8 @@
 import pytest
 from django.core import mail
 
-
 from tests.utils import send_password_reset_email
+
 
 @pytest.mark.django_db
 def test_password_reset_request_sends_email(use_locmem_email_backend, api_client, create_user):
